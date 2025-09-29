@@ -8,15 +8,15 @@ connected_clients = set()
 
 # Define the connection handler function
 async def handler(websocket):
-    uri = "wss://alpha-server.koyeb.app/"
+    #uri = "wss://alpha-server.koyeb.app/"
     connected_clients.add(websocket)
     try:
-        async with websockets.connect(uri) as websocket:
-            async for message in websocket:
-                print(f"client: {message}")
-                websockets.broadcast(connected_clients, message)
-    finally:
-        connected_clients.remove(websocket)
+        #async with websockets.connect(uri) as websocket:
+        async for message in websocket:
+            print(f"client: {message}")
+            websockets.broadcast(connected_clients, message)
+    #finally:
+        #connected_clients.remove(websocket)
 
 # Set up and run the server
 async def main():
@@ -27,5 +27,6 @@ async def main():
 if __name__ == "__main__":
 
     asyncio.run(main())
+
 
 
