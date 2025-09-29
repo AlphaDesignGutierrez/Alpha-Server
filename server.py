@@ -15,12 +15,12 @@ async def handler(websocket):
     try:
         async for message in websocket:
             print(f"client: {message}")
-            lists = connected_clients
+            lists = list(connected_clients)
             lists.remove(websocket)
             websockets.broadcast(lists, message)
 
-    except Exception as e:
-        print(e)
+    except Exception as err:
+        print(err)
     #finally:
         #connected_clients.remove(websocket)
 
@@ -33,6 +33,7 @@ async def main():
 if __name__ == "__main__":
 
     asyncio.run(main())
+
 
 
 
