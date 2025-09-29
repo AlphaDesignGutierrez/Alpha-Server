@@ -10,11 +10,11 @@ connected_clients = set()
 async def handler(websocket):
     #uri = "wss://alpha-server.koyeb.app/"
     connected_clients.add(websocket)
-    try:
-        #async with websockets.connect(uri) as websocket:
-        async for message in websocket:
-            print(f"client: {message}")
-            websockets.broadcast(connected_clients, message)
+    #try:
+    #async with websockets.connect(uri) as websocket:
+    async for message in websocket:
+        print(f"client: {message}")
+        websockets.broadcast(connected_clients, message)
     #finally:
         #connected_clients.remove(websocket)
 
@@ -27,6 +27,7 @@ async def main():
 if __name__ == "__main__":
 
     asyncio.run(main())
+
 
 
 
